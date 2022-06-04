@@ -44,9 +44,6 @@ body{
     align-items: center;
 }
 
-.grid:nth-child(2){
-    box-shadow: none;
-}
 
 .item{
     background-color: rgba(255, 255, 255, .8);
@@ -60,6 +57,10 @@ body{
     box-shadow: 10px 10px rgba(0, 0, 0, .5);
 }
 
+.item:nth-child(2), .item:nth-child(3), .item:nth-child(5), .item:nth-child(6){
+    box-shadow: none;
+}
+
 .item.active:hover{
     background-color: beige;
 }
@@ -69,16 +70,17 @@ body{
 }
 
 .restart{
-    background-color: white;
-    border: .25em solid #5e3c00;
+    background-color: #5e3c00;
+    border: .12em solid white;
     border-radius: 25rem;
-    color: #5e3c00;
-    transform: scale(2);
+    color: white;
+    transform: scale(3);
     cursor: pointer;
     margin-bottom: 100px;
+    padding-bottom: 2.5px;
 }
 
 .restart:hover{
-    background-color: #5e3c00;
-    color: white;
+    background-color: white;
+    color: #5e3c00;
 }
