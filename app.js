@@ -1,11 +1,12 @@
-const box        = document.getElementById("item");
-const playGround = document.getElementById("playGround");
-const object_x   = document.getElementById("Object-X");
-const object_o   = document.getElementById("Object-O");
-const winnerText = document.getElementById("winner");
-const winnerDiv  = document.getElementById("winner-logo");
-const restartBtn = document.getElementById("restart");
-
+const box         = document.getElementById("item");
+const playGround  = document.getElementById("playGround");
+const object_x    = document.getElementById("Object-X");
+const object_o    = document.getElementById("Object-O");
+const winnerText  = document.getElementById("winner");
+const winnerDiv   = document.getElementById("winner-logo");
+const restartBtn  = document.getElementById("restart");
+const winnerOLogo = document.getElementById("winner_o")
+const winnerXLogo = document.getElementById("winner_x")
 
 var moves_x = new Array();
 var moves_o = new Array();
@@ -30,7 +31,6 @@ const check = () => {
             return true;
         }
         else if(checkRow(movesDone)){
-            console.log(movesDone);
             return true;
         }
         else if(checkDiagonal1(movesDone)){
@@ -136,9 +136,7 @@ const setMove = (row, column, node) =>{
 const move = (row, column, node) => {
     setMove(row, column, node);
     if (check()) {
-        winnerText.innerText = "Winner "
-        winnerDiv.appendChild((turn == 'o')?object_o.cloneNode():object_x.cloneNode(true))
-
+        win()
     }
     changeTurn();
 }
@@ -159,6 +157,14 @@ const populatePlayGround = ()=>{
             playGround.appendChild(newNode);
         }
     }
+}
+
+const win = () =>{
+    winnerText.innerText = "Winner "
+    winnerDiv.appendChild((turn == 'o')?winnerOLogo.cloneNode():winnerXLogo.cloneNode(true))
+    playGround.childNodes.forEach(el=>{
+        playGround.replaceChild(el.cloneNode(true), el)
+    })
 }
 
 const restart = () =>{
