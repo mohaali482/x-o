@@ -1,0 +1,84 @@
+body{
+    padding: 0%;
+    margin: 0;
+    background-color: #5e3c00;
+    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.object-o{
+    height: 100px;
+    width: 100px;
+    border-radius: 500%;
+    border: 7px solid #6389A1;
+    background-color: transparent;
+}
+
+.object-x{
+    display: flex;
+    align-items: center;
+}
+
+.object-x .line{
+    height: 110px;
+    width: 10px;
+    position: absolute;
+    background-color: #8f8b76;
+}
+
+.object-x-first{
+    transform: rotate(45deg);
+}
+
+.object-x-second{
+    transform: rotate(-45deg);
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 5px;
+    background-color: transparent;
+    row-gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid:nth-child(2){
+    box-shadow: none;
+}
+
+.item{
+    background-color: rgba(255, 255, 255, .8);
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 1rem;
+    box-shadow: 10px 10px rgba(0, 0, 0, .5);
+}
+
+.item.active:hover{
+    background-color: beige;
+}
+
+#item{
+    display: none;
+}
+
+.restart{
+    background-color: white;
+    border: .25em solid #5e3c00;
+    border-radius: 25rem;
+    color: #5e3c00;
+    transform: scale(2);
+    cursor: pointer;
+    margin-bottom: 100px;
+}
+
+.restart:hover{
+    background-color: #5e3c00;
+    color: white;
+}
