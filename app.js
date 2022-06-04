@@ -7,6 +7,8 @@ const winnerDiv   = document.getElementById("winner-logo");
 const restartBtn  = document.getElementById("restart");
 const winnerOLogo = document.getElementById("winner_o")
 const winnerXLogo = document.getElementById("winner_x")
+const winnerTag   = document.getElementById("winner-tag")
+const restartNode   = document.getElementById("restart-node")
 
 var moves_x = new Array();
 var moves_o = new Array();
@@ -160,7 +162,9 @@ const populatePlayGround = ()=>{
 }
 
 const win = () =>{
-    winnerText.innerText = "Winner "
+    winnerTag.classList.toggle('d-none');
+    restartNode.classList.toggle('d-none');
+    winnerText.innerText = "Winner";
     winnerDiv.appendChild((turn == 'o')?winnerOLogo.cloneNode():winnerXLogo.cloneNode(true))
     playGround.childNodes.forEach(el=>{
         playGround.replaceChild(el.cloneNode(true), el)
@@ -178,6 +182,8 @@ const restart = () =>{
     populatePlayGround()
     winnerText.innerText = "";
     winnerDiv.innerHTML="";
+    winnerTag.classList.toggle('d-none');
+    restartNode.classList.toggle('d-none');
 }
 
 

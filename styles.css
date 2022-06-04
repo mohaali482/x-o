@@ -132,3 +132,12 @@ body{
 .line-1:first-child{
     transform: rotate(-45deg);
 }
+
+#winner-tag{
+    display: flex;
+    justify-content: center;
+}
+
+.d-none{
+    display: none!important;
+}
