@@ -84,3 +84,51 @@ body{
     background-color: white;
     color: #5e3c00;
 }
+
+.winner{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    width: 12rem;
+    height: 5rem;
+    border-radius: 12rem;
+    color: black;
+    background-color:rgba(255, 255, 255, .8);
+}
+
+.winner-text{
+    display: flex;
+    color: black;
+    align-items: center;
+    font-size: 30px;
+    padding-right: 10px;
+}
+
+.winner-logo-o{
+    height: 30px;
+    width: 30px;
+    border-radius: 500%;
+    border: 3px solid #6389A1;
+    background-color: transparent;
+}
+
+.logo-x{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line-1{
+    height:30px;
+    width: 3px;
+    position: absolute;
+    margin-left: 10px;
+    transform: rotate(45deg);
+    background-color: #8f8b76;
+}
+
+.line-1:first-child{
+    transform: rotate(-45deg);
+}
