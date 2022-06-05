@@ -20,8 +20,8 @@
         <div class="line object-x-second"></div>
       </div>
       <!-- X object -->
-      <div class="winner-logo-o" id="winner_o"></div>
-      <div style="margin: 0px 10px 0px 20px;" id="winner_x">
+      <div class="winner-logo-o" id="winner-o"></div>
+      <div style="margin: 0px 10px 0px 20px" id="winner-x">
         <div class="winner-logo-x">
           <div class="logo-x">
             <div class="line-1"></div>
@@ -51,15 +51,9 @@
 
       <!-- Information about the page. -->
       <h1 style="display: flex; align-items: center; justify-content: center">
-        Start
-        <span
-          ><div
-            class="object-x"
-            style="margin-left: 30px; margin-right: 30px; transform: scale(0.5)"
-          >
-            <div class="line object-x-first"></div>
-            <div class="line object-x-second"></div></div
-        ></span>
+        Turn
+        <!-- Information on the turn of the player. -->
+        <span style="margin-left: 10px;" id="first-player"></span>
       </h1>
     </div>
 
@@ -74,12 +68,15 @@
     <div id="winner-tag" class="d-none">
       <div class="winner">
         <div id="winner" class="winner-text">Winner</div>
-        <div id="winner-logo">
-        </div>
+        <div id="winner-logo"></div>
       </div>
     </div>
 
-    <div style="display: flex; justify-content: center;margin-top: 50px;" id="restart-node" class="d-none">
+    <div
+      style="display: flex; justify-content: center; margin-top: 50px"
+      id="restart-node"
+      class="d-none"
+    >
       <!-- Restart the game. -->
       <button class="restart" id="restart">Restart</button>
     </div>

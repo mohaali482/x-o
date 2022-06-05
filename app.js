@@ -5,18 +5,31 @@ const object_o    = document.getElementById("Object-O");
 const winnerText  = document.getElementById("winner");
 const winnerDiv   = document.getElementById("winner-logo");
 const restartBtn  = document.getElementById("restart");
-const winnerOLogo = document.getElementById("winner_o")
-const winnerXLogo = document.getElementById("winner_x")
+const winnerOLogo = document.getElementById("winner-o")
+const winnerXLogo = document.getElementById("winner-x")
 const winnerTag   = document.getElementById("winner-tag")
 const restartNode = document.getElementById("restart-node")
+let firstPlayer   = document.getElementById("first-player")
 
 var moves_x = new Array();
 var moves_o = new Array();
-var numberOfMoves = 0;
 
-var turn = 'x';
+const playerRandomPlayer = Math.floor(Math.random()*10);
 
-const changeTurn = () => turn = (turn == 'o')?'x':'o';
+var turn = playerRandomPlayer%2==0 ? 'x' : 'o';
+
+firstPlayer.appendChild( turn === 'x' ? winnerXLogo.cloneNode(true) : winnerOLogo.cloneNode(true));
+
+const changeTurn = () => {
+    turn = (turn == 'o')?'x':'o';
+    firstPlayer.parentElement.replaceChild(firstPlayer.cloneNode(), firstPlayer)
+
+    firstPlayer = document.getElementById('first-player')
+
+    firstPlayer.appendChild( turn === 'x' ? 
+    winnerXLogo.cloneNode(true) : 
+    winnerOLogo.cloneNode(true));
+}
 
 const check = () => {
     var movesDone;
@@ -145,7 +158,11 @@ const move = (row, column, node) => {
 const eventHandler = (event, row, i)=>{
     event.preventDefault();
     move(row, i, event.target);
-    event.target.removeEventListener('click',eventHandler)
+    const object = event.target
+    try{
+        object.parentElement.replaceChild(object.cloneNode(true), object)
+    }catch(e){
+    }
 }
 
 const populatePlayGround = ()=>{
@@ -171,7 +188,7 @@ const win = () =>{
     })
 }
 
-const restart = () =>{
+const start = () =>{
     moves_o = [];
     moves_x = [];
     while (playGround.hasChildNodes()) {
@@ -180,6 +197,7 @@ const restart = () =>{
         })
     }
     populatePlayGround()
+
     winnerText.innerText = "";
     winnerDiv.innerHTML="";
     winnerTag.classList.toggle('d-none');
@@ -191,5 +209,5 @@ populatePlayGround()
 
 
 restartBtn.addEventListener('click', (event)=>{
-    restart()
+    start()
 });
