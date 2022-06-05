@@ -14,19 +14,23 @@
       <div class="object-o" id="Object-O">
         <!-- We love you MOHALI -->
       </div>
+      <!-- O object -->
       <div class="object-x" id="Object-X">
         <div class="line object-x-first"></div>
         <div class="line object-x-second"></div>
       </div>
+      <!-- X object -->
       <div class="winner-logo-o" id="winner_o"></div>
-          <div style="margin: 0px 10px 0px 20px;" id="winner_x">
-              <div class="winner-logo-x">
-                <div class="logo-x">
-                  <div class="line-1"></div>
-                  <div class="line-1"></div>
-                </div>
-              </div>
+      <div style="margin: 0px 10px 0px 20px;" id="winner_x">
+        <div class="winner-logo-x">
+          <div class="logo-x">
+            <div class="line-1"></div>
+            <div class="line-1"></div>
           </div>
+        </div>
+      </div>
+      <!-- Grid Items -->
+      <div class="item active" id="item"></div>
     </div>
 
     <div>
@@ -44,6 +48,8 @@
         </div>
         Game.
       </h1>
+
+      <!-- Information about the page. -->
       <h1 style="display: flex; align-items: center; justify-content: center">
         Start
         <span
@@ -60,10 +66,11 @@
     <!-- Play Ground -->
     <div style="display: flex; justify-content: center; padding-top: 20px">
       <div class="grid" id="playGround">
-        <!-- Grid Item -->
-        <div class="item active" id="item"></div>
+        <!-- Grid Items goes here. -->
       </div>
     </div>
+
+    <!-- Winner Information goes Here. -->
     <div id="winner-tag" class="d-none">
       <div class="winner">
         <div id="winner" class="winner-text">Winner</div>
@@ -73,6 +80,7 @@
     </div>
 
     <div style="display: flex; justify-content: center;margin-top: 50px;" id="restart-node" class="d-none">
+      <!-- Restart the game. -->
       <button class="restart" id="restart">Restart</button>
     </div>
 
