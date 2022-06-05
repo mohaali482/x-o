@@ -8,7 +8,7 @@ const restartBtn  = document.getElementById("restart");
 const winnerOLogo = document.getElementById("winner_o")
 const winnerXLogo = document.getElementById("winner_x")
 const winnerTag   = document.getElementById("winner-tag")
-const restartNode   = document.getElementById("restart-node")
+const restartNode = document.getElementById("restart-node")
 
 var moves_x = new Array();
 var moves_o = new Array();
