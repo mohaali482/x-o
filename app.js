@@ -13,6 +13,7 @@ let firstPlayer   = document.getElementById("first-player")
 
 var moves_x = new Array();
 var moves_o = new Array();
+var total_moves = 0;
 
 const playerRandomPlayer = Math.floor(Math.random()*10);
 
@@ -133,6 +134,9 @@ const checkDiagonal2 = (arr)=>{
 }
 
 const setMove = (row, column, node) =>{
+    if (node.hasChildNodes()) {
+        return false
+    }
     if (turn === 'o'){
         moves_o.push([row, column]);
         const cloneNodeO = object_o.cloneNode(true);
@@ -145,24 +149,34 @@ const setMove = (row, column, node) =>{
         cloneNodeX.setAttribute("id","");
         node.appendChild(cloneNodeX);
     }
+
+    try{
+        node.parentElement.replaceChild(node.cloneNode(true), node)
+    }catch(e){
+    }
+    total_moves++;
+
+    return true;
 }
 
 
 const move = (row, column, node) => {
-    setMove(row, column, node);
+    if (!setMove(row, column, node)) {
+        return
+    }
     if (check()) {
-        win()
+        gameOver()
+        return
+    }else if(total_moves == 9){
+        gameOver(false)
+        return
     }
     changeTurn();
 }
+
 const eventHandler = (event, row, i)=>{
     event.preventDefault();
     move(row, i, event.target);
-    const object = event.target
-    try{
-        object.parentElement.replaceChild(object.cloneNode(true), object)
-    }catch(e){
-    }
 }
 
 const populatePlayGround = ()=>{
@@ -178,19 +192,27 @@ const populatePlayGround = ()=>{
     }
 }
 
-const win = () =>{
+const gameOver = (winner=true) =>{
     winnerTag.classList.toggle('d-none');
     restartNode.classList.toggle('d-none');
-    winnerText.innerText = "Winner";
-    winnerDiv.appendChild((turn == 'o')?winnerOLogo.cloneNode():winnerXLogo.cloneNode(true))
-    playGround.childNodes.forEach(el=>{
-        playGround.replaceChild(el.cloneNode(true), el)
-    })
+    if (winner) {
+        winnerText.innerText = "Winner";
+        winnerDiv.appendChild((turn == 'o')?winnerOLogo.cloneNode():winnerXLogo.cloneNode(true))
+        playGround.childNodes.forEach(el=>{
+            playGround.replaceChild(el.cloneNode(true), el)
+        })
+    } else {
+        winnerText.innerText = "Draw";
+        playGround.childNodes.forEach(el=>{
+            playGround.replaceChild(el.cloneNode(true), el)
+        })
+    }
 }
 
 const start = () =>{
     moves_o = [];
     moves_x = [];
+    total_moves = 0;
     while (playGround.hasChildNodes()) {
         playGround.childNodes.forEach(el=>{
             playGround.removeChild(el)
@@ -202,6 +224,30 @@ const start = () =>{
     winnerDiv.innerHTML="";
     winnerTag.classList.toggle('d-none');
     restartNode.classList.toggle('d-none');
+}
+
+
+const handleKeyUp = (event)=>{
+    const key = parseInt(event.key);
+    let row;
+    let column;
+
+    if (key >= 7) {
+        row = 0;
+        column = (key-7);
+    } else if(key >= 4){
+        row = 1;
+        column = (key-4);
+    }else if(key >= 1){
+        row = 2;
+        column = (key-1);
+    }
+
+    if (!(row == undefined) && !(column == undefined)) {
+        const node = document.getElementById(`item-${row}-${column}`)
+        move(row, column, node)
+    }
+
 }
 
 
