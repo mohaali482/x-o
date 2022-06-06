@@ -248,6 +248,13 @@ const handleKeyUp = (event)=>{
         move(row, column, node)
     }
 
+    if(event.key == "r" || event.key == "R"){
+        if (check() || total_moves==9) {
+            start();
+            return
+        }
+    }
+
 }
 
 
