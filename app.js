@@ -134,7 +134,7 @@ const checkDiagonal2 = (arr)=>{
 }
 
 const setMove = (row, column, node) =>{
-    if (node.hasChildNodes()) {
+    if (node.hasChildNodes() || check()) {
         return false
     }
     if (turn === 'o'){
