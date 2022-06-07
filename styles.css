@@ -2,8 +2,7 @@ body{
     padding: 0%;
     margin: 0;
     background-color: #5e3c00;
-    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
-    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    background-image: url("images/background.png");
 }
 
 .object-o{
