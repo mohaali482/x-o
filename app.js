@@ -212,6 +212,7 @@ const gameOver = (winner=true) =>{
 const start = () =>{
     playerRandomPlayer = Math.floor(Math.random()*10);
     turn = playerRandomPlayer%2==0 ? 'x' : 'o';
+    changeTurn();
     moves_o = [];
     moves_x = [];
     total_moves = 0;
