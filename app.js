@@ -15,7 +15,7 @@ var moves_x = new Array();
 var moves_o = new Array();
 var total_moves = 0;
 
-const playerRandomPlayer = Math.floor(Math.random()*10);
+var playerRandomPlayer = Math.floor(Math.random()*10);
 
 var turn = playerRandomPlayer%2==0 ? 'x' : 'o';
 
@@ -210,6 +210,8 @@ const gameOver = (winner=true) =>{
 }
 
 const start = () =>{
+    playerRandomPlayer = Math.floor(Math.random()*10);
+    turn = playerRandomPlayer%2==0 ? 'x' : 'o';
     moves_o = [];
     moves_x = [];
     total_moves = 0;
